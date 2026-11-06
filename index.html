@@ -2271,9 +2271,11 @@ function spawnBalloon() {
   div.style.cssText = `left:${5+Math.random()*80}%;--speed:${speed}s;--tilt:${tilt}deg;`;
   div.innerHTML = makeSVG(pair[0], pair[1]);
 
-  div.addEventListener('click', (e) => {
+  const popBalloon = (e) => {
     e.stopPropagation();
-    if (!gameActive) return;
+    if (e.cancelable && e.type === 'touchstart') e.preventDefault();
+    if (!gameActive || div._popped) return;
+    div._popped = true;
     score++;
     scoreEl.textContent = score;
     const burst = document.createElement('div');
@@ -2285,7 +2287,9 @@ function spawnBalloon() {
     gameArea.appendChild(burst);
     setTimeout(() => burst.remove(), 600);
     div.remove();
-  });
+  };
+  div.addEventListener('click', popBalloon);
+  div.addEventListener('touchstart', popBalloon, { passive: false });
 
   div.addEventListener('animationend', () => {
     if (!gameActive || !div.parentNode) return;
@@ -2339,7 +2343,7 @@ function showerConfetti(count = 80) {
 }
 document.getElementById('confetti-btn').addEventListener('click', () => showerConfetti(80));
 
-// Scroll Reveal
+// Scroll Reveal with dynamic viewport check & fallback
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -2348,8 +2352,24 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(e.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
 revealEls.forEach(el => observer.observe(el));
+
+function checkReveals() {
+  const vh = window.innerHeight;
+  revealEls.forEach(el => {
+    if (!el.classList.contains('visible')) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= vh + 60) {
+        el.classList.add('visible');
+        try { observer.unobserve(el); } catch (e) {}
+      }
+    }
+  });
+}
+checkReveals();
+window.addEventListener('scroll', checkReveals, { passive: true });
+window.addEventListener('resize', checkReveals, { passive: true });
 </script>
 </body>
 </html>
