@@ -1,0 +1,41 @@
+===================================================================
+  🎂 HOW TO ADD MORE PHOTOS TO SWATI'S BIRTHDAY SLIDESHOW 📸
+===================================================================
+
+You have 3 super easy ways to add more photos:
+
+METHOD 1: DRAG & DROP DIRECTLY (Easiest & Fastest!)
+--------------------------------------------------
+1. Open "index.html" in your web browser.
+2. Scroll down to the "Magical Gallery" section.
+3. Simply drag any images (.jpg, .jpeg, .png, .webp) from your
+   folder or desktop and drop them right onto the slideshow!
+4. They appear immediately and stay saved even when you refresh.
+
+METHOD 2: DOUBLE-CLICK "update-images.bat"
+-----------------------------------------
+1. Drop any new photos into this folder (or the "assets" folder).
+2. Double-click "update-images.bat".
+3. It automatically updates "images-list.js" in 1 second.
+4. Refresh index.html in your browser!
+
+METHOD 3: AUTOMATIC NAMING CONVENTION
+------------------------------------
+If you drop photos named:
+  photo1.jpg, photo2.jpg, photo3.jpg ...
+  OR image1.jpg, image2.jpg ...
+  OR 1.jpg, 2.jpg, 3.jpg ...
+  OR swati1.jpg, swati2.jpg ...
+The slideshow will automatically detect and display them without editing any files!
+
+===================================================================
+  🎂 BIRTHDAY CAKE CUTTING CEREMONY INSTRUCTIONS 🍰
+===================================================================
+1. Choose between 4 animated cake flavors (Rose Velvet, Chocolate, Lavender, Strawberry).
+2. Click "🕯️ Blow Candles" to make a wish and extinguish the candle flames.
+3. Click any slice on the cake (or click "🔪 Cut Next Slice")!
+4. An animated golden knife slices down with sound effects.
+5. The slice slides out onto a dessert plate and opens a heartfelt birthday message card!
+6. Cut all 6 slices for the grand celebration fanfare!
+===================================================================
+
